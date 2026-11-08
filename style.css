@@ -1,0 +1,104 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    /* جعل الصورة تظهر بالكامل في المنتصف بدون قص */
+    background-image: url("IMG_5679.jpg");
+    background-size: contain; /* بتعرض الصورة بكامل حجمها بدون ما تتقطع */
+    background-position: center;
+    background-repeat: no-repeat;
+    
+    /* خلفية لونها أسود هادئ عشان لو الشاشة عريضة والصورة سابت مساحات فاضية برة */
+    background-color: #111; 
+
+    position: relative;
+    padding: 20px;
+}
+
+/* طبقة شفافة خفيفة جداً عشان الكلام يبدو واضحاً فوق الصورة من غير ما يخفيها */
+body::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.3); /* قللنا السواد عشان الصورة تبقى منورة وواضحة */
+    pointer-events: none;
+}
+
+.love-card {
+    position: relative;
+    z-index: 1;
+    width: 100%;
+    max-width: 480px;
+
+    padding: 30px 20px;
+    text-align: center;
+    color: white;
+
+    /* خلفية شفافة أكتر وبلور أنيق عشان الصورة تبان من ورا الكلام بوضوح */
+    background: rgba(0, 0, 0, 0.45);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+}
+
+h1 {
+    color: #ffb6c9;
+    margin-bottom: 20px;
+    font-size: 28px;
+    text-shadow: 0 2px 4px rgba(0,0,0,0.5);
+}
+
+.sentence {
+    font-size: 18px;
+    line-height: 1.8;
+    margin: 15px 0;
+    padding: 10px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+    text-shadow: 0 1px 3px rgba(0,0,0,0.5);
+}
+
+.heart {
+    font-size: 32px;
+    margin-top: 15px;
+    animation: heartbeat 1.2s infinite;
+}
+
+@keyframes heartbeat {
+    0%, 100% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.2);
+    }
+}
+
+/* للموبايل والشاشات الصغيرة */
+@media (max-width: 480px) {
+    body {
+        padding: 10px;
+    }
+
+    .love-card {
+        padding: 20px 15px;
+    }
+
+    h1 {
+        font-size: 24px;
+    }
+
+    .sentence {
+        font-size: 16px;
+    }
+}
